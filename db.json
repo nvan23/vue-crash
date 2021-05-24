@@ -1,0 +1,22 @@
+{
+  "tasks": [
+    {
+      "id": "1",
+      "text": "Pick a random bug",
+      "day": "March 1st at 2:30pm",
+      "reminder": false
+    },
+    {
+      "id": "3",
+      "text": "Pick a random meal",
+      "day": "March 3st at 4:30pm",
+      "reminder": true
+    },
+    {
+      "text": "Go to home",
+      "day": "Now",
+      "reminder": false,
+      "id": "YK-OJ8R"
+    }
+  ]
+}

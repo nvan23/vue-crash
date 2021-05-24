@@ -1,7 +1,9 @@
 <template>
   <header>
     <h1>{{title}}</h1>
-    <Button text='Add task'></Button>
+    <Button v-show="onHomePage" :bgColor="!showAddTask ? '#1b1a1a' : '#ffffff'"
+      :color="showAddTask ? '#1b1a1a' : '#ffffff'" @btn-click="$emit('toggle-add-task')"
+      :icon="!showAddTask ? 'fas fa-plus' : 'fas fa-times'" :text="!showAddTask ? 'New' : 'Close'"></Button>
   </header>
 </template>
 
@@ -13,10 +15,21 @@
       title: {
         type: String,
         default: "Hello nvan23",
+      },
+      showAddTask: {
+        type: Boolean,
       }
     },
     components: {
       Button
+    },
+    computed: {
+      onHomePage() {
+        if (this.$route.path === '/') {
+          return true
+        }
+        return false
+      }
     }
   }
 </script>

@@ -1,46 +1,32 @@
 <template>
   <div class="container">
-    <Header title="Task Tracker"></Header>
-    <Tasks :tasks="tasks"></Tasks>
+    <Header title="Task Tracker" @toggle-add-task="toggleAddTask" :showAddTask="showAddTask"></Header>
+    <router-view :showAddTask="showAddTask"></router-view>
+    <Footer></Footer>
   </div>
 </template>
 
 <script>
   import Header from './components/Header'
-  import Tasks from './components/Tasks'
+  import Footer from './components/Footer'
 
   export default {
     name: 'App',
     components: {
       Header,
-      Tasks,
+      Footer,
     },
     data() {
+
+      console.log(this.$route)
       return {
-        tasks: []
+        showAddTask: false,
       }
     },
-    created() {
-      this.tasks = [
-        {
-          id: 1,
-          text: 'Pick a random bug',
-          day: 'March 1st at 2:30pm',
-          reminder: true,
-        },
-        {
-          id: 2,
-          text: 'Pick a random pet',
-          day: 'March 2st at 3:30pm',
-          reminder: false,
-        },
-        {
-          id: 3,
-          text: 'Pick a random meal',
-          day: 'March 3st at 4:30pm',
-          reminder: true,
-        }
-      ]
+    methods: {
+      toggleAddTask() {
+        this.showAddTask = !this.showAddTask
+      },
     }
   }
 </script>
@@ -61,6 +47,7 @@
     align-items: center;
     width: 100vw;
     height: 100vh;
+    color: #111111;
   }
 
   .container {
@@ -74,21 +61,28 @@
 
   .btn {
     display: inline-block;
-    background: #202124;
+    background: #1b1a1a;
     color: #fff;
     border: none;
-    padding: 10px 20px;
+    padding: 8px 14px;
     margin: 5px;
     border-radius: 5px;
     cursor: pointer;
     text-decoration: none;
     font-size: 15px;
-    font-family: inherit;
+    font-family: 'Nunito', sans-serif;
+    font-weight: 900 !important;
     box-shadow: 0px 4px 16px rgba(0, 0, 0, 0.3);
+    border: 1px solid #1b1a1a;
   }
 
   .btn:hover {
-    opacity: 0.9;
+    background: #ffffff !important;
+    color: #1b1a1a !important;
+    transition: background 500ms ease;
+    font-size: 15px;
+    font-family: 'Nunito', sans-serif;
+    font-weight: 1000 !important;
   }
 
   .btn:focus {

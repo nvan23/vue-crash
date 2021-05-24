@@ -1,6 +1,6 @@
 <template>
-  <button class="btn" :style="{background: color}" @click="onClick()">
-    {{text}}
+  <button class="btn" :style="{background: bgColor, color: color}" @click="onClick()">
+    <i :class="icon"></i> {{text}}
   </button>
 </template>
 
@@ -10,17 +10,27 @@
     props: {
       text: {
         type: String,
-        default: "Button"
       },
       color: {
         type: String,
-        default: "black"
+      },
+      bgColor: {
+        type: String,
+      },
+      icon: {
+        type: String,
       }
     },
     methods: {
       onClick() {
-
+        this.$emit('btn-click')
       }
     }
   }
 </script>
+
+<style scoped>
+  button i {
+    margin-right: 6px;
+  }
+</style>

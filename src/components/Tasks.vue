@@ -1,7 +1,11 @@
 <template>
-  <div :key="task.id" v-for="task in tasks">
-    <Task :task="task"></Task>
-  </div>
+  <transition-group name="list" tag="p">
+    <div :key="task.id" v-for="task in tasks">
+      <Task @toggle-reminder="$emit('toggle-reminder', task.id)" @delete-task="$emit('delete-task', task.id)"
+        :task="task">
+      </Task>
+    </div>
+  </transition-group>
 </template>
 
 <script>
@@ -15,6 +19,20 @@
     },
     components: {
       Task
-    }
+    },
+    emits: ['delete-task', 'toggle-reminder'],
   }
 </script>
+
+<style>
+  .list-enter-active,
+  .list-leave-active {
+    transition: all 0.5s;
+  }
+
+  .list-enter,
+  .list-leave-to {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+</style>
