@@ -15,5 +15,10 @@ yarn serve
 yarn build
 ```
 
+### To store data, let run Json server
+```
+yarn backend
+```
+
 ### Customize configuration
 See [Configuration Reference](https://cli.vuejs.org/config/).
